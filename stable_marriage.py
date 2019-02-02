@@ -119,8 +119,19 @@ class Mentee(object):
 			pairing = self.calc_pair_score(mentor, gender_score, course_code_score, interest_score)
 			self.preferences.append(pairing)
 
+
+		#sort preferences list
 		self.preferences.sort(key=lambda x: x[1], reverse=True)
+
 		#unpack preference tuples
+		for i, mentee in enumerate(self.preferences):
+			self.preferences[i] = mentee[0]
+
+
+	def print_preferences(self):
+		for s in self.preferences:
+			print(s)
+		print("\n")
 
 
 
@@ -144,12 +155,12 @@ def main():
 
 	# mentor1.print_preferences()
 
-	for mentor in mentorList:
-		mentor.set_preferences(menteeList, 1, 1, 1)
-		print("Mentor:")
-		print(mentor)
+	for mentee in menteeList:
+		mentee.set_preferences(mentorList, 1, 1, 1)
+		print("Mentee:")
+		print(mentee)
 		print("preferences:")
-		mentor.print_preferences()
+		mentee.print_preferences()
 
 
 if __name__ == '__main__':
